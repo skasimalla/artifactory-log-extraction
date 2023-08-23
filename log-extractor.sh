@@ -1,5 +1,3 @@
-find . -name "*.zip" | while read filename; do unzip -o -d "`dirname "$filename"`" "$filename"; done;
-cd artifactory
 #For whatever reason some people are putting zips inside zips
 find . -name "*.zip" | while read filename; do unzip -o -d "`dirname "$filename"`" "$filename"; done;
 
