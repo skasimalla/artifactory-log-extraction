@@ -1,5 +1,15 @@
-#For whatever reason some people are putting zips inside zips
-find . -name "*.zip" | while read filename; do unzip -o -d "`dirname "$filename"`" "$filename"; done;
+#Support bundle generation button on the UI puts zips inside zips
+dirname="$(date +"%d-%m-%Y")"$1
+
+mkdir $dirname
+cd $dirname
+
+a=4
+while [ $a -gt 0 ];
+do
+find . -name "*.zip" | while read filename; do unzip -o -d "`dirname "$filename"`" "$filename"; echo "$filename" ;rm "$filename"; done;
+((a--))
+done
 
 #Some people are putting gz files in zips
 find . -name "*.gz" -type f -print0 | xargs -0 gunzip
