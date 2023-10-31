@@ -1,7 +1,11 @@
 #Support bundle generation button on the UI puts zips inside zips
-dirname="$(date +"%d-%m-%Y")"$1
+
+dirname="$(date +"%d-%m-%Y")"
 
 mkdir $dirname
+
+cp $1 $dirname
+
 cd $dirname
 
 a=4
