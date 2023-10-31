@@ -1,11 +1,9 @@
+#First parameter should be the name of the zip file
 #Support bundle generation button on the UI puts zips inside zips
-
-dirname="$(date +"%d-%m-%Y")"
+dirname="$(date +"%Y%m%d")"
 
 mkdir $dirname
-
 cp $1 $dirname
-
 cd $dirname
 
 a=4
@@ -19,7 +17,7 @@ done
 find . -name "*.gz" -type f -print0 | xargs -0 gunzip
 
 mkdir -p extracted-logs
-find . -name "*request*log" -type f -exec cp {} extracted-logs \;
+find . -name "artifactory-request*log" -type f -exec cp {} extracted-logs \;
 
 cd extracted-logs
 
