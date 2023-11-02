@@ -13,7 +13,7 @@ find . -name "*.zip" | while read filename; do unzip -o -d "`dirname "$filename"
 ((a--))
 done
 
-#Some people are putting gz files in zips
+#Support bundle puts gz inside zip
 find . -name "*.gz" -type f -print0 | xargs -0 gunzip
 
 mkdir -p extracted-logs
