@@ -18,7 +18,8 @@ done
 find . -name "*.gz" -type f -print0 | xargs -0 gunzip
 
 mkdir -p extracted-logs
-find . -name "artifactory-request*log" -type f -exec cp --backup=t {} extracted-logs \;
+chmod +x saveCopy
+find . -name "artifactory-request*log" -type f -exec ./saveCopy {} extracted-logs \;
 
 cd extracted-logs
 
