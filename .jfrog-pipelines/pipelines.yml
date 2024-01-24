@@ -2,76 +2,18 @@ template: true   # required for local templates
 valuesFilePath: ./values.yml
 
 resources:
-  - name: app_repo
-    type: GitRepo
-    configuration:
-      gitProvider: {{ .Values.gitIntegration }}                      
-      path: {{ .Values.gitRepositoryPath }}    
-      branches:
-        include: master
-
-  - name: app_buildinfo
-    type: BuildInfo
-    configuration:
-      sourceArtifactory: {{ .Values.artifactoryIntegration }}
+  
 
   - name: app_promoted_buildinfo
     type: BuildInfo
     configuration:
       sourceArtifactory: {{ .Values.artifactoryIntegration }}
       
-  - name: gosvc_promoted_build_info
-    type: BuildInfo
-    configuration:
-      # sourceArtifactory: demoArt
-      sourceArtifactory: {{ .Values.artifactoryIntegration }}
-      buildName: svc_build
-      buildNumber: 1      
-      
-  - name: release_bundle
-    type: ReleaseBundle
-    configuration:
-      #sourceDistribution: myDist
-      sourceDistribution:  {{ .Values.distributionIntegration }}
-      name: demo_rb
-      version: v2.0.0
-
-  - name: signed_bundle
-    type: ReleaseBundle
-    configuration:
-      #sourceDistribution: myDist
-      sourceDistribution:  {{ .Values.distributionIntegration }}
-      name: demo_rb
-      version: v2.0.0
-
-  - name: distribution_rules
-    type: DistributionRule
-    configuration:
-      #sourceDistribution: myDist
-      sourceDistribution:  {{ .Values.distributionIntegration }}
-      #serviceName: "*"
-      siteName: "pipelinesedge"
-      cityName: "*"
-      countryCodes:
-        - "*"     
 
 pipelines:
 
   - name: process_1
     steps:
-      - name: app_promote_build
-        type: PromoteBuild
-        configuration:
-          #failOnValidate: true
-          #copy: true
-          targetRepository: {{ .Values.prodRepository }}
-          comment: "promoted via pipeline ${pipeline_name} in run number ${run_number}"
-          inputResources:
-            - name: app_buildinfo
-              trigger: true
-          outputResources:
-            - name: app_promoted_buildinfo
-
       - name: app_deploy
         type: Bash
         configuration:
