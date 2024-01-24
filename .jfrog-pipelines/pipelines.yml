@@ -3,16 +3,14 @@ valuesFilePath: ./values.yml
 
 resources:
   
-
   - name: app_promoted_buildinfo
     type: BuildInfo
     configuration:
       sourceArtifactory: {{ .Values.artifactoryIntegration }}
       
-
 pipelines:
 
-  - name: process_1
+  - name: step1
     steps:
       - name: app_deploy
         type: Bash
