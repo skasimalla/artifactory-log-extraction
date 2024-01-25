@@ -1,7 +1,7 @@
 gitIntegration: myGithub
-gitRepositoryPath: skasimalla/artifactory-log-extraction  # replace jfrog with your username or org name
 artifactoryIntegration: myArtifactory
-distributionIntegration: myDistribution
+
+gitRepositoryPath: skasimalla/artifactory-log-extraction  # replace jfrog with your username or org name
 imageName: app_docker_image
 artifactoryUrl: soleng.jfrog.io # do not include https
 sourceRepository: quickstarts-docker-local  # create local repository in Artifactory
