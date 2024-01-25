@@ -23,7 +23,8 @@ pipelines:
           onStart:
             - jfrog rt docker-pull {{ .Values.artifactoryUrl }}/{{ .Values.prodRepository }}/{{ .Values.imageName }}:$res_app_promoted_buildinfo_buildNumber {{ .Values.prodRepository }}
             #- jfrog rt dl prod-go-local/app
-            #- ls -latr
+            - ls -ltra
+            - echo $res_app_promoted_buildinfo_buildNumber
           onExecute:
             - docker run {{ .Values.artifactoryUrl }}/{{ .Values.prodRepository }}/{{ .Values.imageName }}:$res_app_promoted_buildinfo_buildNumber
  
