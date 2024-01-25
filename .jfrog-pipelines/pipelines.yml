@@ -12,7 +12,7 @@ pipelines:
 
   - name: step1
     steps:
-      - name: step1-1
+      - name: step1_1
         type: Bash
         configuration:
           integrations:
