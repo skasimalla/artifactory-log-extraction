@@ -22,11 +22,8 @@ pipelines:
         execution:
           onStart:
             - ls -ltra
-            - echo $res_app_promoted_buildinfo_buildNumber
-            - jfrog rt docker-pull {{ .Values.artifactoryUrl }}/{{ .Values.prodRepository }}/{{ .Values.imageName }}:$res_app_promoted_buildinfo_buildNumber {{ .Values.prodRepository }}
-            #- jfrog rt dl prod-go-local/app
           onExecute:
-            - docker run {{ .Values.artifactoryUrl }}/{{ .Values.prodRepository }}/{{ .Values.imageName }}:$res_app_promoted_buildinfo_buildNumber
+            - docker run --env  "USER=${USER}" --env "TOKEN=${TOKEN}" --env "DOWNLOAD_PATH=${DOWNLOAD_PATH}" skasimalla/generate_report:1
  
  
  
