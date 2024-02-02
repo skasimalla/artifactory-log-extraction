@@ -14,7 +14,7 @@ pipelines:
           onStart:
             - ls -ltra
           onExecute:
-            - docker run --env  "USER=${USER}" --env "TOKEN=${TOKEN}" --env "DOWNLOAD_PATH=${DOWNLOAD_PATH}" skasimalla/generate_report:1
+            - docker run --env  "USER=${USER}" --env "TOKEN=${TOKEN}" --env "DOWNLOAD_PATH=${DOWNLOAD_PATH}" skasimalla/generate_report_linux:1
  
  
  
