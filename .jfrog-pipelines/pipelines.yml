@@ -9,7 +9,7 @@ pipelines:
         type: Bash
         configuration:
           integrations:
-            - name: myCredentials
+            - name: env_variables_for_usage_pipeline
         execution:
           onStart:
             - ls -ltra
