@@ -16,9 +16,7 @@ pipelines:
         type: Bash
         configuration:
           integrations:
-            - name: {{ .Values.artifactoryIntegration }}
-          inputResources:
-            - name: app_promoted_buildinfo
+            - name: myCredentials
         execution:
           onStart:
             - ls -ltra
