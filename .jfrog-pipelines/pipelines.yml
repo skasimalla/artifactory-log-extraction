@@ -1,13 +1,6 @@
 template: true   # required for local templates
 valuesFilePath: ./values.yml
 
-resources:
-  
-  - name: app_promoted_buildinfo
-    type: BuildInfo
-    configuration:
-      sourceArtifactory: {{ .Values.artifactoryIntegration }}
-      
 pipelines:
 
   - name: step1
