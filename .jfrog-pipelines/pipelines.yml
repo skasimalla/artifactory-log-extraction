@@ -22,8 +22,5 @@ pipelines:
             - ls -ltra
           onExecute:
             - echo $res_incoming_webhook_resource_payload
-            - docker run --env  "USER=${USER}" --env "TOKEN=${TOKEN}" --env "BASE_URL=${BASE_URL}" --env "JSON=${res_incoming_webhook_resource_payload}" skasimalla/generate_report:1
+            - docker run --env  "USER=${USER}" --env "TOKEN=${TOKEN}" --env "BASE_URL=${BASE_URL}" --env "JSON=${res_incoming_webhook_resource_payload}" solengcustomersupport.jfrog.io/docker-local/generate_report_linux:1
  
- 
- 
-  
