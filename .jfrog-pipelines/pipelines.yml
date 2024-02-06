@@ -21,7 +21,8 @@ pipelines:
           onStart:
             - ls -ltra
           onExecute:
-            - docker run --env  "USER=${USER}" --env "TOKEN=${TOKEN}" --env "DOWNLOAD_PATH=${DOWNLOAD_PATH}" skasimalla/generate_report_linux:1
+            - echo $res_incoming_webhook_payload
+            - docker run --env  "USER=${USER}" --env "TOKEN=${TOKEN}" --env "BASE_URL=${BASE_URL}" --env "JSON=${res_incoming_webhook_payload}" skasimalla/generate_report:1
  
  
  
