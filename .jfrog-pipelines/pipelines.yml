@@ -1,19 +1,28 @@
 template: true   # required for local templates
 valuesFilePath: ./values.yml
 
-pipelines:
+resources:
+  - name: MyIncomingWebhookResource
+    type: IncomingWebhook
+    configuration:
+      webhookName: MyIncomingWebhook
 
+pipelines:
   - name: step1
     steps:
       - name: step1_1
         type: Bash
         configuration:
+          inputResources:
+            - name: MyIncomingWebhookResource
           integrations:
             - name: env_variables_for_usage_pipeline
         execution:
           onStart:
             - ls -ltra
           onExecute:
+            - FILE_PATH = $(echo "$res_MyIncomingWebhookResource_payload" | jq '.data.path')
+            - echo $FILE_PATH
             - docker run --env  "USER=${USER}" --env "TOKEN=${TOKEN}" --env "DOWNLOAD_PATH=${DOWNLOAD_PATH}" skasimalla/generate_report_linux:1
  
  
