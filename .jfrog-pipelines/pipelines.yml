@@ -2,10 +2,10 @@ template: true   # required for local templates
 valuesFilePath: ./values.yml
 
 resources:
-  - name: MyIncomingWebhookResource
+  - name: incoming_webhook_resource
     type: IncomingWebhook
     configuration:
-      webhookName: MyIncomingWebhook
+      webhookName: incoming_webhook
 
 pipelines:
   - name: step1
@@ -14,14 +14,14 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
-            - name: MyIncomingWebhookResource
+            - name: incoming_webhook_resource
           integrations:
             - name: env_variables_for_usage_pipeline
         execution:
           onStart:
             - ls -ltra
           onExecute:
-            - FILE_PATH = $(echo "$res_MyIncomingWebhookResource_payload" | jq '.data.path')
+            - FILE_PATH = $(echo "$res_incoming_webhook_payload" | jq '.data.path')
             - echo $FILE_PATH
             - DOWNLOAD_PATH=$BASE_PATH$FILE_PATH
             - echo $DOWNLOAD_PATH
