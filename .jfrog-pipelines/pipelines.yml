@@ -21,9 +21,9 @@ pipelines:
           onStart:
             - ls -ltra
           onExecute:
-            - FILE_PATH = $(echo "$res_incoming_webhook_payload" | jq '.data.path')
+            - export FILE_PATH = $(echo "$res_incoming_webhook_payload" | jq '.data.path')
             - echo $FILE_PATH
-            - DOWNLOAD_PATH=$BASE_PATH$FILE_PATH
+            - export DOWNLOAD_PATH=$BASE_PATH$FILE_PATH
             - echo $DOWNLOAD_PATH
             - docker run --env  "USER=${USER}" --env "TOKEN=${TOKEN}" --env "DOWNLOAD_PATH=${DOWNLOAD_PATH}" skasimalla/generate_report_linux:1
  
