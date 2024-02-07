@@ -24,5 +24,7 @@ pipelines:
             - echo $res_incoming_webhook_resource_payload
             #- docker login -u $USER -p $TOKEN solengcustomersupport.jfrog.io 
             - echo $UPLOAD_PATH
+            - echo $USER
+            - echo $TOKEN            
             #- docker run --env  "USER=${USER}" --env "TOKEN=${TOKEN}" --env "BASE_URL=${BASE_URL}" --env "JSON=${res_incoming_webhook_resource_payload}" --env "UPLOAD_PATH=${UPLOAD_PATH}" skasimalla/generate_report_linux:1
  
