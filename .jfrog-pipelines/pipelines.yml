@@ -8,9 +8,9 @@ resources:
       webhookName: incoming_webhook
 
 pipelines:
-  - name: step1
+  - name: SamK_RequestsReportPipeline
     steps:
-      - name: step1_1
+      - name: step1
         type: Bash
         configuration:
           inputResources:
