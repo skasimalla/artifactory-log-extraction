@@ -1,10 +1,12 @@
 #This script was designed and tested on Mac, ig might work on Windows, but it hasn't been tested by me. 
 #First parameter should be the name of the zip file
 #Support bundle generation button on the UI puts zips inside zips
-dirname="$(date +"%Y%m%d")"
+dirname=$1"$(date +"%Y%m%d")"
 
 mkdir $dirname
 cp $1 $dirname
+cp savecopy $dirname
+
 cd $dirname
 
 a=4
