@@ -23,9 +23,8 @@ mkdir -p extracted-logs
 chmod +x saveCopy
 find . -name "artifactory-request*log" -type f -exec ./saveCopy {} extracted-logs \;
 
-cd extracted-logs
+rm extracted-logs/*request-out*log
 
-rm *request-out*log
-
+cd -
 #I always put all my projects into ~/workspace (developer cleanliness since a decade) - you probably need to change this line 
-python3 ~/workspace/requesttime-master/requestTime-3.py * -x
+python3 ./requesttime-master/requestTime-3.py * -x

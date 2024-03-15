@@ -1,2 +1,5 @@
-MD5=$(md5 "$file" | awk '{print $1}')
-cp "$file" <destination>/$(echo "$file" | sed -e "s/.mov/_${MD5}.mov/")
+cp -vn "$1" "$2"/ || cp -vn "$1" "$2"/"${1##*/}"~"$(md5 "$1" | cut -f1 -d' ')"
+
+
+#MD5=$(md5 "$file" | awk '{print $1}')
+#cp "$file" $(echo "$file" | sed -e "s/.mov/_${MD5}.mov/")
