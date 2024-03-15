@@ -29,5 +29,15 @@ PWD=`pwd`
 echo $PWD
 
 cd -
+
+#Running patricks script
+
+folder="requesttime"
+url=https://git.jfrog.info/scm/sup/requesttime.git
+
+if ! git clone "${url}" "${folder}" 2>/dev/null && [ -d "${folder}" ] ; then
+    echo "Clone failed because the folder ${folder} exists"
+fi
+
 #I always put all my projects into ~/workspace (developer cleanliness since a decade) - you probably need to change this line 
 python3 ./requesttime/requestTime-3.py $dirname/extracted-logs/* -x
