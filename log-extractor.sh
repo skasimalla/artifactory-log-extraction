@@ -25,6 +25,9 @@ find . -name "artifactory-request*log" -type f -exec ./saveCopy {} extracted-log
 
 rm extracted-logs/*request-out*log
 
+PWD=`pwd`
+echo $PWD
+
 cd -
 #I always put all my projects into ~/workspace (developer cleanliness since a decade) - you probably need to change this line 
-python3 ./requesttime-master/requestTime-3.py * -x
+python3 ./requesttime/requestTime-3.py $dirname/extracted-logs/* -x
