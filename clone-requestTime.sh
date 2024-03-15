@@ -1,1 +1,0 @@
-git clone https://git.jfrog.info/scm/sup/requesttime.git
