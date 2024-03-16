@@ -1,10 +1,12 @@
-Usage: 
+# Usage: 
 
-chmod +x log-extractor.sh
+This script is amazing automates all the extraction work of a support bundle 
 
-./log-extractor.sh FULL_PATH_TO_SUPPORT_BUNDLE
+    chmod +x log-extractor.sh
+    ./log-extractor.sh <full path to suppport bundle>
 
 Example: 
-./log-extractor.sh ~/Downloads/Smartsheet_SB.zip
-# ~ means home folder on *nix (linux/ unix/ mac) 
+
+    ./log-extractor.sh ~/Downloads/Smartsheet_SB.zip
+    #~ means home folder on *nix (linux/ unix/ mac) 
 
