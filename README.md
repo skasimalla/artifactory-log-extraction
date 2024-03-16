@@ -2,7 +2,7 @@ Usage:
 
 chmod +x log-extractor.sh
 
-./log-extractor.sh <PATH to the support bundle>
+./log-extractor.sh FULL_PATH_TO_SUPPORT_BUNDLE
 
 Example: 
 ./log-extractor.sh ~/Downloads/Smartsheet_SB.zip
