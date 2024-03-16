@@ -30,9 +30,9 @@ echo $OUTPUT_FILE
 python3 generate_report.py --output_filename $OUTPUT_FILE
 
 #Upload PDF to results folder
-export UPLOAD_PATH="${UPLOAD_PATH}/${FILE_PATH}"
+export UPLOAD_PATH="${UPLOAD_PATH}${FILE_PATH}/"
 echo ${UPLOAD_PATH}
-curl -u $USER:$TOKEN -i -T ./outputs/* "${UPLOAD_PATH}/"
+curl -u $USER:$TOKEN -i -T ./outputs/* "${UPLOAD_PATH}"
 
 #Move the processed file to processed folder
 export FILE_PATH_MOVE="customer-support-bundles-processed/$FILE_PATH/"
