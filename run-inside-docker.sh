@@ -33,6 +33,10 @@ python3 generate_report.py --output_filename $OUTPUT_FILE
 export UPLOAD_PATH="${UPLOAD_PATH}${FILE_PATH}/"
 echo ${UPLOAD_PATH}
 curl -u $USER:$TOKEN -i -T ./outputs/* "${UPLOAD_PATH}"
+#Uploading to backup location
+curl -u $USER:$TOKEN -i -T ./outputs/* "https://solengcustomersupport.jfrog.io/artifactory/customer-support-bundles-results/outputs/"
+curl -u $USER:$TOKEN -i -T ./outputs/* "https://solengcustomersupport.jfrog.io/artifactory/customer-support-bundles-results/${FILE_PATH}/"
+
 
 #Move the processed file to processed folder
 export FILE_PATH_MOVE="customer-support-bundles-processed/$FILE_PATH/"
