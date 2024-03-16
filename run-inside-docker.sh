@@ -16,11 +16,11 @@ echo $FILE_PATH
 DOWNLOAD_PATH=$BASE_URL$FILE_PATH
 echo $DOWNLOAD_PATH
 
-mkdir -p /app/inputs
-cd /app/inputs
+mkdir -p /app/requests-report/inputs
+cd /app/requests-report/inputs
 curl -L -u $USER:$TOKEN -O "${DOWNLOAD_PATH}"
 
-cd /app
+cd /app/requests-report
 ls -lrt 
 
 #The below ##*/ will print the first part after slash
@@ -30,9 +30,9 @@ echo $OUTPUT_FILE
 python3 generate_report.py --output_filename $OUTPUT_FILE
 
 #Upload PDF to results folder
-export UPLOAD_PATH="${UPLOAD_PATH}${FILE_PATH}/"
+export UPLOAD_PATH="${UPLOAD_PATH}/${FILE_PATH}"
 echo ${UPLOAD_PATH}
-curl -u $USER:$TOKEN -T ./outputs/* "${UPLOAD_PATH}/${OUTPUT_FILE}"
+curl -u $USER:$TOKEN -i -T ./outputs/* "${UPLOAD_PATH}/"
 
 #Move the processed file to processed folder
 export FILE_PATH_MOVE="customer-support-bundles-processed/$FILE_PATH/"
