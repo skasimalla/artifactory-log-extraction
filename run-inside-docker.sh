@@ -18,6 +18,7 @@ echo $DOWNLOAD_PATH
 
 mkdir -p /app/requests-report/inputs
 cd /app/requests-report/inputs
+rm -f *
 curl -L -u $USER:$TOKEN -O "${DOWNLOAD_PATH}"
 
 cd /app/requests-report
@@ -33,6 +34,12 @@ python3 generate_report.py --output_filename $OUTPUT_FILE
 export UPLOAD_PATH="${UPLOAD_PATH}${FILE_PATH}/"
 echo ${UPLOAD_PATH}
 curl -u $USER:$TOKEN -i -T ./outputs/${OUTPUT_FILE}.pdf "${UPLOAD_PATH}"
+
+
+INPUT_FILE="${DOWNLOAD_PATH##*/}"
+chmod +x ../log-extractor.sh
+../log-extractor.sh ./inputs/$INPUT_FILE
+
 
 #Move the processed file to processed folder
 export FILE_PATH_MOVE="customer-support-bundles-processed/$FILE_PATH/"
