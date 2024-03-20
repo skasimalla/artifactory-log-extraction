@@ -16,9 +16,12 @@ echo $FILE_PATH
 DOWNLOAD_PATH=$BASE_URL$FILE_PATH
 echo $DOWNLOAD_PATH
 
+rm -f /app/requests-report/inputs/*
+rm -f /app/requests-report/outputs/*
+
 mkdir -p /app/requests-report/inputs
 cd /app/requests-report/inputs
-rm -f *
+ls -lrt
 curl -L -u $USER:$TOKEN -O "${DOWNLOAD_PATH}"
 
 cd /app/requests-report
@@ -36,10 +39,14 @@ echo ${UPLOAD_PATH}
 curl -u $USER:$TOKEN -i -T ./outputs/${OUTPUT_FILE}.pdf "${UPLOAD_PATH}"
 
 
+cd /app
+ls -lrt
 INPUT_FILE="${DOWNLOAD_PATH##*/}"
-chmod +x ../log-extractor.sh
-../log-extractor.sh ./inputs/$INPUT_FILE
+chmod +x log-extractor.sh
+./log-extractor.sh ./inputs/$INPUT_FILE
 
+cd /app/requests-report
+ls -lrt 
 
 #Move the processed file to processed folder
 export FILE_PATH_MOVE="customer-support-bundles-processed/$FILE_PATH/"
