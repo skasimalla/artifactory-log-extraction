@@ -4,7 +4,7 @@ MAINTAINER Sam Kasimalla
 RUN mkdir -p /app
 COPY ./ /app/
 
-RUN apt-get -y update; apt-get -y install curl jq
+RUN apt-get -y update; apt-get -y install curl jq zip
 RUN pip install -r /app/requests-report/requirements.txt
 
 CMD ["chmod", "+x", "/app/run-inside-docker.sh"]

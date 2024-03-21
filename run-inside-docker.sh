@@ -16,8 +16,8 @@ echo $FILE_PATH
 DOWNLOAD_PATH=$BASE_URL$FILE_PATH
 echo $DOWNLOAD_PATH
 
-rm -f /app/requests-report/inputs/*
-rm -f /app/requests-report/outputs/*
+rm -rf /app/requests-report/inputs/*
+rm -rf /app/requests-report/outputs/*
 
 mkdir -p /app/requests-report/inputs
 cd /app/requests-report/inputs
@@ -43,7 +43,7 @@ cd /app
 ls -lrt
 INPUT_FILE="${DOWNLOAD_PATH##*/}"
 chmod +x log-extractor.sh
-./log-extractor.sh ./inputs/$INPUT_FILE
+./log-extractor.sh ./requests-report/inputs/$INPUT_FILE
 
 cd /app/requests-report
 ls -lrt 
@@ -52,6 +52,9 @@ ls -lrt
 export FILE_PATH_MOVE="customer-support-bundles-processed/$FILE_PATH/"
 echo $FILE_PATH_MOVE
 #jf rt move  $FILE_PATH $FILE_PATH_MOVE
+
+rm -rf /app/requests-report/inputs/*
+rm -rf /app/requests-report/outputs/*
 
 curl -X POST -u $USER:$TOKEN "https://solengcustomersupport.jfrog.io/artifactory/api/move/customer-support-bundles/$FILE_PATH?to=/$FILE_PATH_MOVE"
 
