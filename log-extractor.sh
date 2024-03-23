@@ -5,7 +5,7 @@ dirname=$1"$(date +"%Y%m%d")"
 
 mkdir $dirname
 cp $1 $dirname
-cp savecopy $dirname
+cp saveCopy $dirname
 
 cd $dirname
 
@@ -37,4 +37,4 @@ if ! git clone "${url}" "${folder}" 2>/dev/null && [ -d "${folder}" ] ; then
 fi
 
 #I always put all my projects into ~/workspace (developer cleanliness since a decade) - you probably need to change this line 
-python3 ./requesttime/requestTime-3.py $dirname/extracted-logs/* -x
+python3 ./requesttime/requestTime-3.py $dirname/extracted-logs/* -x > output.txt

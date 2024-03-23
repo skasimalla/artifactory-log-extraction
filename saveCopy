@@ -1,4 +1,6 @@
-cp -vn "$1" "$2"/"$(md5 "$1" | cut -f4 -d ' ')"~"${1##*/}"
+cp -vn "$1" "$2"/"$(md5sum "$1" | cut -f 1 -d ' ')"~"${1##*/}"
+#folder_name=basename `dirname $1`
+#install -D "$1" "$2"/$folder_name/"$(md5sum "$1" | cut -f 1 -d ' ')"~"${1##*/}"
 
 #cp -vn "$1" "$2"/ || cp -vn "$1" "$2"/"${1##*/}"~"$(md5sum "$1" | cut -f1 -d' ')"
 

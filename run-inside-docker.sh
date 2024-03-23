@@ -45,6 +45,10 @@ INPUT_FILE="${DOWNLOAD_PATH##*/}"
 chmod +x log-extractor.sh
 ./log-extractor.sh ./requests-report/inputs/$INPUT_FILE
 
+#Upload TSV to results folder
+curl -u $USER:$TOKEN -i -T /app/output.txt "${UPLOAD_PATH}"
+
+
 cd /app/requests-report
 ls -lrt 
 
@@ -55,6 +59,7 @@ echo $FILE_PATH_MOVE
 
 rm -rf /app/requests-report/inputs/*
 rm -rf /app/requests-report/outputs/*
+rm -rf /app/output.txt
 
 curl -X POST -u $USER:$TOKEN "https://solengcustomersupport.jfrog.io/artifactory/api/move/customer-support-bundles/$FILE_PATH?to=/$FILE_PATH_MOVE"
 
