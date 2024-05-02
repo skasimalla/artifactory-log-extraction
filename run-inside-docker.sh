@@ -53,13 +53,13 @@ cd /app/requests-report
 ls -lrt 
 
 #Move the processed file to processed folder
-export FILE_PATH_MOVE="customer-support-bundles-processed/$FILE_PATH/"
-echo $FILE_PATH_MOVE
+export FILE_PATH_DIR=$(dirname $FILE_PATH)
+echo $FILE_PATH_DIR
 #jf rt move  $FILE_PATH $FILE_PATH_MOVE
 
 rm -rf /app/requests-report/inputs/*
 rm -rf /app/requests-report/outputs/*
 rm -rf /app/output.txt
 
-curl -X POST -u $USER:$TOKEN "https://solengcustomersupport.jfrog.io/artifactory/api/move/customer-support-bundles/$FILE_PATH?to=/$FILE_PATH_MOVE"
+curl -X POST -u $USER:$TOKEN "https://solengcustomersupport.jfrog.io/artifactory/api/move/customer-support-bundles/$FILE_PATH_DIR?to=customer-support-bundles-processed/"
 
