@@ -23,6 +23,6 @@ pipelines:
             - echo $res_incoming_webhook_resource_payload
           onExecute:
             #- docker login -u $USER -p $TOKEN solengcustomersupport.jfrog.io 
-            - docker pull skasimalla/generate_report_linux:1.4
-            - docker run --env  "USER=${int_env_variables_for_usage_pipeline_USER}" --env "TOKEN=${int_env_variables_for_usage_pipeline_TOKEN}" --env "BASE_URL=${int_env_variables_for_usage_pipeline_BASE_URL}" --env "JSON=${res_incoming_webhook_resource_payload}" --env "UPLOAD_PATH=${int_env_variables_for_usage_pipeline_UPLOAD_PATH}" skasimalla/generate_report_linux:1.4
+            - docker pull skasimalla/generate_report_linux:1.5
+            - docker run --env  "USER=${int_env_variables_for_usage_pipeline_USER}" --env "TOKEN=${int_env_variables_for_usage_pipeline_TOKEN}" --env "BASE_URL=${int_env_variables_for_usage_pipeline_BASE_URL}" --env "JSON=${res_incoming_webhook_resource_payload}" --env "UPLOAD_PATH=${int_env_variables_for_usage_pipeline_UPLOAD_PATH}" skasimalla/generate_report_linux:1.5
             
