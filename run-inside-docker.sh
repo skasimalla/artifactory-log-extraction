@@ -31,12 +31,13 @@ ls -lrt
 export OUTPUT_FILE="${DOWNLOAD_PATH##*/}"_output
 echo $OUTPUT_FILE
 
-python3 generate_report.py --output_filename $OUTPUT_FILE
+python3 generate_report.py --output_filename $OUTPUT_FILE --generate_csv --generate_png
+
 
 #Upload PDF to results folder
-export UPLOAD_PATH="${UPLOAD_PATH}${FILE_PATH}/"
-echo ${UPLOAD_PATH}
-curl -u $USER:$TOKEN -i -T ./outputs/${OUTPUT_FILE}.pdf "${UPLOAD_PATH}"
+#export UPLOAD_PATH="${UPLOAD_PATH}${FILE_PATH}/"
+#echo ${UPLOAD_PATH}
+#curl -u $USER:$TOKEN -i -T ./outputs/${OUTPUT_FILE}.pdf "${UPLOAD_PATH}"
 
 
 cd /app
@@ -45,8 +46,13 @@ INPUT_FILE="${DOWNLOAD_PATH##*/}"
 chmod +x log-extractor.sh
 ./log-extractor.sh ./requests-report/inputs/$INPUT_FILE
 
+
+
+grep -l -f patterns.txt * > ./outputs/pattern_match.txt
+zip -r output.zip ./outputs 
+
 #Upload TSV to results folder
-curl -u $USER:$TOKEN -i -T /app/output.txt "${UPLOAD_PATH}"
+curl -u $USER:$TOKEN -i -T /app/outputs/output.zip "${UPLOAD_PATH}"
 
 
 cd /app/requests-report

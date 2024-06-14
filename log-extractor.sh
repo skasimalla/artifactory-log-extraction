@@ -12,12 +12,14 @@ cd $dirname
 a=4
 while [ $a -gt 0 ];
 do
-find . -name "*.zip" | while read filename; do unzip -o -d "`dirname "$filename"`" "$filename"; echo "$filename" ;rm "$filename"; done;
+find . -name "*.zip" | while read filename; do unzip -o -d "`dirname "$filename"`" "$filename"; echo "$filename" ;rm "$filename"; 
+find . -name "*.gz" -type f -print0 | xargs -0 gunzip
+done;
 ((a--))
 done
 
 #Support bundle puts gz inside zip
-find . -name "*.gz" -type f -print0 | xargs -0 gunzip
+
 
 mkdir -p extracted-logs
 chmod +x saveCopy

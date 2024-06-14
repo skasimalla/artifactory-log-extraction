@@ -1,4 +1,4 @@
-version=1.5
+version=1.6
 echo $version
 
 #docker login -u ${USER} -p ${TOKEN}  solengcustomersupport.jfrog.io
