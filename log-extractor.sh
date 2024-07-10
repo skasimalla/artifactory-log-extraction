@@ -19,12 +19,6 @@ done;
 done
 
 #Support bundle puts gz inside zip
-<<<<<<< HEAD
-
-=======
-find . -name "*.gz" -type f -print0 | xargs -0 gunzip
-find . -name "*.gz" -type f -print0 | xargs -0 gunzip
->>>>>>> 0e7125fb995bb59861d5d49f0141780117e8d585
 
 mkdir -p extracted-logs
 chmod +x saveCopy
